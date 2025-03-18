@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - ActivationStation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .question {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .answer {
+            display: none;
+            padding: 10px;
+            border-left: 3px solid #4CAF50;
+            margin-top: 5px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        .question:hover {
+            background-color: #45a049;
+        }
+        #footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <button class="question">How do I activate Windows?</button>
+            <div class="answer">
+                <p>Select your Windows version and edition on the homepage, then copy the activation key provided and enter it in your system settings.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="question">Are these activation keys legal?</button>
+            <div class="answer">
+                <p>These are generic keys provided by Microsoft for evaluation or installation. A valid license must be purchased for permanent activation.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="question">Why isn't my activation key working?</button>
+            <div class="answer">
+                <p>Ensure you're entering the correct key for your edition. If it still doesn't work, try activating via the command prompt using "slmgr /ipk YOUR-KEY".</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="question">Do you provide Office activation?</button>
+            <div class="answer">
+                <p>Yes! We offer guides on activating Office legally. Check our homepage for more details.</p>
+            </div>
+        </div>
+
+        <div id="footer">
+            <p>Made by: NoobkingRsa</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll(".question").forEach(button => {
+            button.addEventListener("click", function () {
+                const answer = this.nextElementSibling;
+                answer.style.display = answer.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
+</body>
+</html>

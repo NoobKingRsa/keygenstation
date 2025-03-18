@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActivationStation</title>
+
+    <!-- AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4071189649308379"
+         crossorigin="anonymous"></script>
+
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        /* Side Navigation Menu Styles */
+        .side-nav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+
+        .side-nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-nav a:hover {
+            color: #f1f1f1;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        select, button {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Result Section */
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0ffe0;
+            border: 1px solid #d0d0d0;
+            display: none;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #result:hover {
+            background-color: #d4f8d4;
+        }
+
+        #footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleNav()">☰</div>
+
+    <!-- Side Navigation Menu -->
+    <div id="sideNav" class="side-nav">
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <h1>ActivationStation</h1>
+        
+        <label for="version">Select Windows version:</label>
+        <select id="version">
+            <option value="Windows 10">Windows 10</option>
+            <option value="Windows 11">Windows 11</option>
+        </select>
+        
+        <label for="edition">Select Edition:</label>
+        <select id="edition"></select>
+
+        <button onclick="getActivationKey()">Get Activation Key</button>
+
+        <div id="result" onclick="copyToClipboard()"></div>
+
+        <div id="footer">
+            <p>Made by: NoobkingRsa</p>
+        </div>
+    </div>
+
+    <!-- Script to Handle Side Navigation Toggle -->
+    <script>
+        // Function to toggle the side navigation menu
+        function toggleNav() {
+            var sideNav = document.getElementById("sideNav");
+            if (sideNav.style.left === "-250px") {
+                sideNav.style.left = "0";
+            } else {
+                sideNav.style.left = "-250px";
+            }
+        }
+
+        // Corrected Activation keys for Windows 10 and 11
+        const activationKeys = {
+            "Windows 10": {
+                "Home": "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99",
+                "Home N": "3KHY7-WNT83-DGQKR-F7HPR-844BM",
+                "Home Single Language": "7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH",
+                "Home Country Specific": "PVMJN-6DFY6-9CCP6-7BKTT-D3WVR",
+                "Professional": "W269N-WFGWX-YVC9B-4J6C9-T83GX",
+                "Professional N": "MH37W-N47XK-V7XM9-C7227-GCQG9",
+                "Education": "NW6C2-QMPVW-D7KKK-3GKT6-VCFB2",
+                "Education N": "2WH4N-8QGBV-H22JP-CT43Q-MDWWJ",
+                "Enterprise": "NPPR9-FWDCX-D2C8J-H872K-2YT43",
+                "Enterprise N": "DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4"
+            },
+            "Windows 11": {
+                "Home": "YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY",
+                "Home N": "2F77B-TNFGY-69QQF-B8YKP-D69TJ",
+                "Home Single Language": "BT79Q-G7N6G-PGBYW-4YWX6-6F4BT",
+                "Home Country Specific": "N2434-X9J4V-Y2Y3H-28G9J-F6Y83",
+                "Professional": "VK7JG-NPHTM-C97JM-9MPGT-3V66T",
+                "Professional N": "8PTT6-RNW4C-6V7J2-C2D3X-MHBPB",
+                "Education": "YVWGF-BXNMC-HTQYQ-CPQ99-66QFC",
+                "Education N": "XR4MP-73JDB-2PDXJ-4JWBW-8Q4FF",
+                "Enterprise": "NPPR9-FWDCX-D2C8J-H872K-2YT43",
+                "Enterprise N": "DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4"
+            }
+        };
+
+        function populateEditions(version) {
+            const editionSelect = document.getElementById("edition");
+            editionSelect.innerHTML = "";
+            const editions = Object.keys(activationKeys[version]);
+            editions.forEach(edition => {
+                const option = document.createElement("option");
+                option.value = edition;
+                option.textContent = edition;
+                editionSelect.appendChild(option);
+            });
+        }
+
+        populateEditions("Windows 10");
+
+        document.getElementById("version").addEventListener("change", function () {
+            populateEditions(this.value);
+        });
+
+        function getActivationKey() {
+            const version = document.getElementById("version").value;
+            const edition = document.getElementById("edition").value;
+            const resultDiv = document.getElementById("result");
+            const key = activationKeys[version][edition];
+
+            if (key) {
+                resultDiv.textContent = `Click to Copy: ${key}`;
+                resultDiv.dataset.key = key; // Store key for copying
+                resultDiv.style.display = "block";
+            } else {
+                resultDiv.textContent = "Invalid selection!";
+            }
+        }
+
+        function copyToClipboard() {
+            const resultDiv = document.getElementById("result");
+            const key = resultDiv.dataset.key;
+
+            if (key) {
+                navigator.clipboard.writeText(key).then(() => {
+                    resultDiv.textContent = "Copied!";
+                    setTimeout(() => {
+                        resultDiv.textContent = `Click to Copy: ${key}`;
+                    }, 2000);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
